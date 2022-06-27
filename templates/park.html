@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/css/map.css"/>
+
+{% endblock %}
+
+{% block body %}
+
+<input id ="pac-input" class="controls" type="text" placeholder="Search Box">
+
+<!-- <div class="form-group">
+  <label for="city">City:</label>
+  
+</div> -->
+
+  <!-- <form action="#" onsubmit="searchValue(); return false">
+    
+    <br>
+    <div>
+      <input type="submit" value="Search">
+    </div>
+  </form> -->
+    
+
+    <div id="map"></div>
+
+
+
+  <script src="/static/js/park.js"></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF_GJXFz3mwkXkNsB18_u-tAnLP9yvoEA&libraries=places&callback=initMap">
+
+  </script>
+  {% endblock%}

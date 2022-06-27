@@ -1,0 +1,12 @@
+html, body {
+    margin: 0;
+    width: 75%;
+    height: 75%;
+  }
+  
+  .map,
+  #map {
+    width: 75%;
+    height: 75%;
+  }
+  

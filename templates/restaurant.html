@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/css/map.css"/>
+
+{% endblock %}
+
+{% block body %}
+
+    <input id ="pac-input" class="controls" type="text" placeholder="Search Box">
+
+    <div id="map"></div>
+    <div id="restaurantmap"></div>
+
+
+  <script src="/static/js/restaurant.js"></script>
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF_GJXFz3mwkXkNsB18_u-tAnLP9yvoEA&libraries=places&callback=init">
+
+  </script>
+  {% endblock%}
