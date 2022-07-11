@@ -17,10 +17,10 @@ const defaultBounds = {
 const input = document.getElementById("pac-input");
 const options = {
   bounds: defaultBounds,
-  componentRestrictions: { country: "us" },
+  componentRestrictions: { country: "us"},
   fields: ["address_components", "geometry", "icon", "name"],
   strictBounds: false,
-  types: ["establishment"],
+  // types: ["establishment"],
 };
 const autocomplete = new google.maps.places.Autocomplete(input, options);
 
@@ -46,7 +46,7 @@ autocomplete.addListener('place_changed', function() {
   }
   marker.setIcon(({
     url: place.icon,
-    size: new google.maps.Size(71, 71),
+    size: new google.maps.Size(51, 51),
     origin: new google.maps.Point(0, 0),
     anchor: new google.maps.Point(17, 34),
     scaledSize: new google.maps.Size(35, 35)
@@ -72,8 +72,11 @@ autocomplete.addListener('place_changed', function() {
       if(place.address_components[i].types[0] == 'country'){
           document.getElementById('country').innerHTML = place.address_components[i].long_name;
       }
+      if(place.address_components[i].types[0] == 'locality'){
+        document.getElementById('city').innerHTML = place.address_components[i].long_name;
+      }
   }
-  document.getElementById('location').innerHTML = place.street_address;
+  document.getElementById('location').innerHTML = place.formatted_address;
   document.getElementById('lat').innerHTML = place.geometry.location.lat();
   document.getElementById('lon').innerHTML = place.geometry.location.lng();
   });

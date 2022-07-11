@@ -1,21 +1,83 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/user_try.css">
+    <link rel="stylesheet" href="/static/css/map.css"/>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <nav id="sidebar">
+          <div class="sidebar-header">
+              <h3>Welcome</h3>
+          </div>
 
-{% block head %}
-  <link rel="stylesheet" href="/static/css/map.css"/>
+          <ul class="list-unstyled components">
+              <p>Select from the menu below</p>
+              <li class="active">
+                  <a href="#homeSubmenu">Home</a>
+              <li>
+                  <a href="#">Apartments</a>
+              </li>
+              <li>
+                  <a href="#pageSubmenu" >Crime</a>
+              <li>
+                  <a href="#">Schools</a>
+              </li>
+              <li>
+                  <a href="#">Restaurants</a>
+              </li>
+          </ul>
+      </nav>
 
-{% endblock %}
+      <!-- Page Content  -->
+      <div id="content">
 
-{% block body %}
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
 
-    <input id ="pac-input" class="controls" type="text" placeholder="Search Box">
-
-    <div id="map"></div>
-    <div id="restaurantmap"></div>
-
-
-  <script src="/static/js/restaurant.js"></script>
-  <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF_GJXFz3mwkXkNsB18_u-tAnLP9yvoEA&libraries=places&callback=init">
-
+                  <button type="button" id="sidebarCollapse" class="btn btn-info">
+                      <i class="fas fa-align-left"></i>
+                      <span>Close Sidebar</span>
+                  </button>
+                  <input id ="pac-input" class="controls" type="text" placeholder="Search Box">
+              </div>
+          </nav>
+          <div id="map"></div>
+          <ul class= "geodata">
+              <li>Full adress: <span id="location"></span></li>
+              <li>Postal Code:<span id="postal_code"></span></li>
+              <li>Country: <span id="country"></span></li>
+              <li>Latitude: <span id="lat"></span></li>
+              <li>Longitude: <span id="lon"></span></li>
+          </ul>
+      
+        <script src="/static/js/map_basic.js"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkyvxOSCHTHeLMqR9hWpGqp1MszyTQcsM&libraries=places&callback=initMap">
+      
+        </script>
+      <div>
+      </div>
+  </div> 
+  <script> 
+  $(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
   </script>
-  {% endblock%}
+  <script src="/static/js/restaurant.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+  
+ 

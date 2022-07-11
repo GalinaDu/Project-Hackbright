@@ -17,7 +17,10 @@ const defaultBounds = {
 const input = document.getElementById("pac-input");
 const options = {
   bounds: defaultBounds,
-  componentRestrictions: { country: "us" },
+  componentRestrictions: { 
+    country: "us" ,
+    postalCode: "94070"
+  },
   fields: ["address_components", "geometry", "icon", "name"],
   strictBounds: false,
   types: ["park"],
@@ -73,6 +76,7 @@ autocomplete.addListener('place_changed', function() {
           document.getElementById('country').innerHTML = place.address_components[i].long_name;
       }
   }
+  console.log("place", place)
   document.getElementById('location').innerHTML = place.street_address;
   document.getElementById('lat').innerHTML = place.geometry.location.lat();
   document.getElementById('lon').innerHTML = place.geometry.location.lng();
@@ -80,4 +84,30 @@ autocomplete.addListener('place_changed', function() {
 
 }
 
- 
+// fetch("htpps://google.com") //simple GET request
+// .then((data) => {
+//   await data.json();
+// })
+// .then((result) => {
+//   console.log(result)
+// })
+
+// fetch(`https://google-map.com?place=${us}`)
+
+// var payload = {
+//   email: email,
+//   password: password
+// }
+
+// const options = {
+//   method: 'POST',
+//   headers: {
+//     'content-type': 'application/json'
+//   },
+//   body: JSON.stringify(payload)
+// }
+
+// fetch("/url", options)
+// .then((response) => await response.json())
+// .then((data) => console.log(data))
+// .catch((err) => console.log(err))

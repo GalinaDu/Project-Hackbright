@@ -20,11 +20,11 @@ const options = {
   componentRestrictions: { country: "us" },
   fields: ["address_components", "geometry", "icon", "name"],
   strictBounds: false,
-  types: ["school"],
 };
 const autocomplete = new google.maps.places.Autocomplete(input, options);
 
 const infowindow = new google.maps.InfoWindow();
+
 const marker = new  google.maps.Marker({
   map: map,
   anchorPoint: new google.maps.Point(0, -29)
@@ -42,15 +42,15 @@ autocomplete.addListener('place_changed', function() {
     map.fitBounds(place.geometry.viewport);
   }else{
     map.setCenter(place.geometry.location);
-    map.setZoom(17);
+    map.setZoom(12);
   }
-  marker.setIcon(({
-    url: place.icon,
-    size: new google.maps.Size(71, 71),
-    origin: new google.maps.Point(0, 0),
-    anchor: new google.maps.Point(17, 34),
-    scaledSize: new google.maps.Size(35, 35)
-  }));
+  // marker.setIcon(({
+  //   url: place.icon,
+  //   size: new google.maps.Size(71, 71),
+  //   origin: new google.maps.Point(0, 0),
+  //   anchor: new google.maps.Point(17, 34),
+  //   scaledSize: new google.maps.Size(35, 35)
+  // }));
   marker.setPosition(place.geometry.location);
   marker.setVisible(true);
 

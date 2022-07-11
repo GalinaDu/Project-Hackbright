@@ -36,8 +36,8 @@ HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
 # Define parameters
 
-PARAMETERS = {'term': 'restaurant',
-               'limit': 50,
+PARAMETERS = {'term': 'apartments',
+               'limit': 1,
                'radius': 5000,
                'location': 'San Carlos'}
 

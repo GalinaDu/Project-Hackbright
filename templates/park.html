@@ -21,7 +21,14 @@
       <input type="submit" value="Search">
     </div>
   </form> -->
-    
+  <ul class= "geodata">
+    <li>Full Address: <span id="location"></span></li>
+    <li>Postal Code:<span id="postal_code"></span></li>
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+ </ul>
+ 
 
     <div id="map"></div>
 
@@ -29,7 +36,7 @@
 
   <script src="/static/js/park.js"></script>
   <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF_GJXFz3mwkXkNsB18_u-tAnLP9yvoEA&libraries=places&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCrSTmdIRX615rBfL49oB5M7sNLQHjogg&libraries=places&callback=initMap">
 
   </script>
   {% endblock%}
