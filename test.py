@@ -1,11 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
-
 app = Flask(__name__)
 
 # change to name of your database; add path if necessary
-db_name = 'projrct.db'
+db_name = 'project.db'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
 

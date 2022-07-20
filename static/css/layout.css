@@ -1,3 +1,6 @@
+body{
+    font-family: 'Manjari', sans-serif;
+}
 .wrapper {
     display: flex;
     width: 100%;
@@ -7,7 +10,7 @@
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #7386D5;
+    background:#265077;
     color: #fff;
     transition: all 0.3s;
 }
@@ -17,13 +20,14 @@
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
+    padding: 17px;
+    background:  linear-gradient(to bottom, #022140 0%, #265077 50%, #000000 50%,  #265077 50%, #022140 100%); ;
+   
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #265077  ;
 }
 
 #sidebar ul p {
@@ -35,17 +39,21 @@
     padding: 10px;
     font-size: 1.1em;
     display: block;
+    border-bottom: 2px solid #fff ;
+    color:#fff
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #265077;
     background: #fff;
+    border:3px #fff
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: #265077;
+    background:#fff ;
+    border-bottom: 3px #fff
 }
 
 a[data-toggle="collapse"] {
@@ -63,13 +71,19 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #265077;
 }
-
+#sidebarCollapse {
+    background:  #265077;
+    border:#265077;
+    color: #fff;
+}
 ul.CTAs {
     padding: 20px;
 }
-
+#pac-input {
+    width: 600px;
+}
 ul.CTAs a {
     text-align: center;
     font-size: 0.9em !important;
@@ -80,26 +94,51 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color:#265077;
 }
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
+    background: #265077 !important;
     color: #fff !important;
 }
 
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-
+.navbar navbar-expand-lg navbar-light bg-light {
+    padding: 20px;
+    background: #ddd 50%;
+}
 #content {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
 }
+.card{
+    margin-top: 25px;
+    padding: 10px 0 15px 0px;
+    border: 1px solid #2d5f5d
+    }
+    .card-img-top {
+        height: 166px;
+    } 
+.card-title {
+    height: 48px;
+    position: center;
+}
+.card-text {
+    height:112px;
+    
+}
 
+a.btn.btn-primary {
+    background: #022140;
+    margin: 10px;
+    border:#022140;
+    position: center;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

@@ -1,5 +1,5 @@
 body {
-      background: #3b5997;
+      background: #265077;
       padding: 0;
       margin: 0;
       font-family: 'Manjari', sans-serif;
@@ -11,7 +11,7 @@ body {
       font-weight: bold;
       }
       .btn-custom {
-      background: #2a4784;
+      background: #022140;
       color: #fff;
       }
       .btn.focus,
@@ -24,7 +24,7 @@ body {
       }
       .container {
       box-shadow: 1px 0 10px 15px rgba(0, 0, 0, .3);
-      background: linear-gradient(to bottom, #3b5997 0%, #3b5997 50%, #000000 50%, #ddd 50%, #ddd 100%);
+      background: linear-gradient(to bottom, #022140 0%, #265077 50%, #000000 50%, #ddd 50%, #fff 100%);
       padding: 10px 0 15px 0px;
       }
        

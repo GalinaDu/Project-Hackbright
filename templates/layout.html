@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neighborhoody</title>
+    <title> Neigborhoody</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -15,28 +15,30 @@
       <!-- Sidebar  -->
       <nav id="sidebar">
           <div class="sidebar-header">
-              <h3>Neighborhoody</h3>
+              <h3>Neighborhody</h3>
           </div>
 
           <ul class="list-unstyled components">
-             
-             <li>
-                  <a href="/map">Home</a>
+          
+              <li >
+                <a href="/map"> Home</a>
+            
               <li>
                   <a href="/apartments">Apartments</a>
-                </li>
               </li>
-              <li>
-                  <a href="/crime" >Crime</a>
-              <li>
+             
+              <li >
                   <a href="/school">Schools</a>
               </li>
-              <li>
-                  <a href="/restaurants">Restaurants</a>
-              </li>
-              <li>
+              <li >
                 <a href="/parks">Parks</a>
             </li>
+            <li >
+              <a href="/restaurants">Restaurants</a>
+          </li>
+          <li >
+            <a href="/parks"> Parks</a>
+        </li>
           </ul>
       </nav>
 
@@ -48,7 +50,9 @@
 
                   <button type="button" id="sidebarCollapse" class="btn btn-info">
                       <i class="fas fa-align-left"></i>
-                      <span>Close Sidebar</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                      </svg>
                   </button>
                   <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <i class="fas fa-align-justify"></i>
@@ -56,38 +60,19 @@
 
               </div>
           </nav>
-        
-          <input id ="pac-input" class="controls" type="text" placeholder="Search Box">
 
-          <div id="map"></div>
-      
-          
-            <form class="form-inline float-right" name="formName" action = "/map", method="POST">
-            <ul class= "geodata">
-               <!-- <li>Full adress: <span id="location"></span></li> -->
-               <input type ="hidden" placeholder="Postal Code:" name ="postal_code" id="postal_code">
-               <input  type ="hidden" placeholder="Country:" name ="country" id="country">
-               <input  type ="hidden" placeholder="city:" name ="city" id="city">
-               <input  type ="hidden" placeholder="latitude:" name ="latitude" id="lat">
-               <input  type ="hidden" placeholder="Longitude:" name ="longitude" id="lon">
-               <!-- <button type="submit" class="btn btn-custom">Save to session</button> -->
-            </ul>
-          </form>
-        <script src="/static/js/map_basic.js"></script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkyvxOSCHTHeLMqR9hWpGqp1MszyTQcsM&libraries=places&callback=initMap">
-      
-        </script>
       <div>
+        {% block content %}
+        {% endblock %}
       </div>
-   </div> 
-   <script> 
-   $(document).ready(function () {
+  </div> 
+  <script> 
+  $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
 });
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>

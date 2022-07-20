@@ -44,13 +44,6 @@ autocomplete.addListener('place_changed', function() {
     map.setCenter(place.geometry.location);
     map.setZoom(12);
   }
-  // marker.setIcon(({
-  //   url: place.icon,
-  //   size: new google.maps.Size(71, 71),
-  //   origin: new google.maps.Point(0, 0),
-  //   anchor: new google.maps.Point(17, 34),
-  //   scaledSize: new google.maps.Size(35, 35)
-  // }));
   marker.setPosition(place.geometry.location);
   marker.setVisible(true);
 
@@ -76,6 +69,36 @@ autocomplete.addListener('place_changed', function() {
   document.getElementById('location').innerHTML = place.street_address;
   document.getElementById('lat').innerHTML = place.geometry.location.lat();
   document.getElementById('lon').innerHTML = place.geometry.location.lng();
-  });
+  
+  var locations = [];
+  //Using fetch to process the ajax call 
+  // if you use fetch, besure to include the source below this line in your template
+  //<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+  // fetch('/restaurants')
+  // .then(function(response) {
+  //  return response.text();
+  //  }).then(function(body) {
+  //  var obj = JSON.parse(body);
+  //  var myAdd = {};
+  //  var addresses = obj.cordinates;
+  //  var l = addresses.length;
+  //  for (i = 0; i < l; i++) {
+  //  myAdd = {
+  //       position: {
+  //           lat: parseFloat(obj.cordinates[i].lat),
+  //           lng: parseFloat(obj.cordinates[i].lng)
+  //                 },
+  //           title: obj.cordinates[i].title,
+  //            };
+  //  locations.push(myAdd);
+  // }
+  // locations.forEach(function(feature) {
+  //           var marker = new google.maps.Marker({
+  //             position: feature.position,
+  //             title: feature.title,
+  //             map: map
+  //           });
+  //         });
+});
 
 }

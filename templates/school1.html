@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<ul>
+                
+    {% for school in schools %}
+        <li>{{ school.name }}</li>
+        <li>{{ school.type }}</li>
+        <li>{{ school.rating }}</li>
+        <li>{{ school.get('web-site') }}</li>
+       
+    
+
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Neighborhoody</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/user_try.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
     <link rel="stylesheet" href="/static/css/map.css"/>
   </head>
   <body>
@@ -15,24 +15,24 @@
       <!-- Sidebar  -->
       <nav id="sidebar">
           <div class="sidebar-header">
-              <h3>Welcome</h3>
+              <h3>Neigborhoody</h3>
           </div>
 
           <ul class="list-unstyled components">
-              <p>Select from the menu below</p>
-              <li class="active">
-                  <a href="/users">Home</a>
-              <li>
-                  <a href="/test">Apartments</a>
-              </li>
+             <li>
+                  <a href="/map">Home</a>
+                </li>
               <li>
                   <a href="/crime" >Crime</a>
               <li>
-                  <a href="/schools">Schools</a>
+                  <a href="/school">Schools</a>
               </li>
               <li>
                   <a href="/restaurants">Restaurants</a>
               </li>
+              <li>
+                <a href="/parks">Parks</a>
+            </li>
           </ul>
       </nav>
 
@@ -44,45 +44,105 @@
 
                   <button type="button" id="sidebarCollapse" class="btn btn-info">
                       <i class="fas fa-align-left"></i>
-                      <span>Close Sidebar</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                      </svg> 
                   </button>
-                  <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <i class="fas fa-align-justify"></i>
-                  </button>
+                
 
               </div>
+              <input id ="pac-input" class="controls" type="text" placeholder="Enter your location">
           </nav>
         
-          <input id ="pac-input" class="controls" type="text" placeholder="Search Box">
+          
 
           <div id="map"></div>
-      
-          <ul class= "geodata">
-              <li>Full adress: <span id="location"></span></li>
-              <li>Postal Code:<span id="postal_code"></span></li>
-              <li>Country: <span id="country"></span></li>
-              <li>City:<span id="city"></span></li>
-              <li>Latitude: <span id="lat"></span></li>
-              <li>Longitude: <span id="lon"></span></li>
-          </ul>
       
         <script src="/static/js/map_basic.js"></script>
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkyvxOSCHTHeLMqR9hWpGqp1MszyTQcsM&libraries=places&callback=initMap">
-      
         </script>
-        <ul>
-            
+  <script type="text/javascript">
+    var locations = JSON.parse('{{ apartments | tojson | safe}}');
+
+     console.log(locations[0])
+
+    var staticlocations = [
+        // ['Ramen san', 37.78511637816802, -122.43200834862841, 6]
+        {
+           name: 'Ramen san', lat: 37.78511637816802, lng: -122.43200834862841
+        }
+    ];
+    // find center of location
+    var cx = 0, cy = 0;
+    for (i = 0; i < locations.length; i++) {  
+        cx += locations[i].coordinates.latitude;
+        cy += locations[i].coordinates.longitude;
+    }
+
+    if( locations.length > 0) {
+        cx /= locations.length;
+        cy /= locations.length;
+    }
+    else  {
+        cx = 37.773972;
+        cy = -122.431297;
+    }
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(cx, cy),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        // position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        // position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+        position: new google.maps.LatLng(locations[i].coordinates.latitude, locations[i].coordinates.longitude),
+
+
+        map: map
+      });
+      
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i].name);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+  <div class="container">   
+    <div class= "row"> 
+        
+        <div class="card-group">
             {% for apartment in apartments %}
-                <li>
-                    <p>{{ apartment.name }}</p>
-                    <img src={{apartment.image_url}} style="width: 50%;" />
-                </li>
-            {% endfor %}
-          </ul>
-        </form> 
-      <div>
-      </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <img src="{{apartment.image_url}}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{apartment.name}}</h5>
+                            <div class="card-text">
+                            <p>{{apartment["location"]["display_address"][0]}} {{apartment["location"]["display_address"][1]}}</p>
+                            Rating:{{apartment.rating}}
+                            </div>
+                            <div>
+                            <a href="{{apartment.url}}" target="_blank" class="btn btn-primary"> See on Yelp</a>
+                            </div>
+                        </div> 
+                   </div>
+                </div>
+            </div>
+           {% endfor %}
+        </div> 
+    </div>
+</div> 
+    
   </div> 
   <script> 
   $(document).ready(function () {

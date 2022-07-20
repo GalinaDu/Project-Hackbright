@@ -60,7 +60,6 @@ class Apartment(db.Model):
     __tablename__ = "apartments"
 
     apartment_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    score = db.Column(db.Integer)
     address = db.Column(db.String)
     name = db.Column(db.String)
     neighborhood_id = db.Column(db.Integer, db.ForeignKey("neighborhoods.neighborhood_id"))
@@ -79,7 +78,6 @@ class Restaurant(db.Model):
     rating = db.Column(db.Integer)
     address = db.Column(db.String)
     name = db.Column(db.String)
-    cuisine_type = db.Column(db.String) 
     neighborhood_id = db.Column(db.Integer, db.ForeignKey("neighborhoods.neighborhood_id"))
 
      #Child of NEighborhoods
